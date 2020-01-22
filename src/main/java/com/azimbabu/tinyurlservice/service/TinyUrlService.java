@@ -41,6 +41,22 @@ public class TinyUrlService {
     this.tinyUrlProperties = tinyUrlProperties;
   }
 
+  /**
+   * Creates tinyUrl from the originalUrl. If customAlias is provided, it will be used as the short
+   * url key.
+   *
+   * @param originalUrl Url to shorten.
+   * @param customAlias Optional custom alias to be used as short url key. Should be unique else
+   * @param username Optional username of the owner of the tiny url.
+   * @param expirationInSeconds Optional Expiration in seconds.
+   * @return @{@link TinyUrl} object on success.
+   * @throws @{@link IllegalArgumentException} if input validation fails such as originalUrl is
+   *     empty.
+   * @throws @{@link ServiceException}. Possible error codes : @{@link
+   *     ErrorCode#CUSTOM_ALIAS_EXISTS} if customAlias is not unique , @{@link
+   *     ErrorCode#SHORT_URL_RETRY_EXHAUSTED} if retry limit is exhausted for unique short url key
+   *     generation.
+   */
   public TinyUrl createTinyUrl(
       String originalUrl, String customAlias, String username, Long expirationInSeconds) {
 
@@ -75,6 +91,13 @@ public class TinyUrlService {
     return tinyUrlRepository.save(tinyUrl);
   }
 
+  /**
+   * Find tinyUrl by short url key.
+   *
+   * @param shortUrl unique short url key
+   * @return @{@link TinyUrl} object wrapped in @{@link Optional} or empty if the short url key is
+   *     not found.
+   */
   public Optional<TinyUrl> getTinyUrlByShortUrl(String shortUrl) {
     checkArgument(StringUtils.isNotEmpty(shortUrl), "Short url should not be empty");
     return tinyUrlRepository.findByShortUrl(shortUrl);
