@@ -62,6 +62,11 @@ public class TinyUrlService {
 
     checkArgument(StringUtils.isNotEmpty(originalUrl), "Original url should not be empty");
 
+    checkArgument(
+        StringUtils.isEmpty(customAlias)
+            || customAlias.length() <= tinyUrlProperties.getShortUrlLength(),
+        "Custom alias maximum length exceeded");
+
     if (StringUtils.isNotEmpty(customAlias)
         && tinyUrlRepository.findByShortUrl(customAlias).isPresent()) {
       throw new ServiceException(ErrorCode.CUSTOM_ALIAS_EXISTS);

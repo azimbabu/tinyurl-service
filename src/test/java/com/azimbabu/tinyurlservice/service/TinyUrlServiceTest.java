@@ -68,6 +68,18 @@ public class TinyUrlServiceTest {
   }
 
   @Test
+  void customAliasTooLong() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () ->
+            tinyUrlService.createTinyUrl(
+                "http://www.test.com",
+                RandomStringUtils.randomAlphabetic(tinyUrlProperties.getShortUrlLength() + 1),
+                null,
+                500l));
+  }
+
+  @Test
   void useCustomAlias() {
     String originalUrl = "http://www.test.com";
     String customAlias = "testAlias";
