@@ -1,0 +1,14 @@
+spring:
+  data:
+    cassandra:
+      keyspace-name: tinyurl_service
+      schema-action: recreate_drop_unused
+      contact-points:
+        - 127.0.0.1
+      port: 9042
+
+tinyurl:
+  max-short-url-retry: 5
+  short-url-length: 7
+  default-url-expiration-in-days: 30
+  max-url-expiration-in-days: 365
