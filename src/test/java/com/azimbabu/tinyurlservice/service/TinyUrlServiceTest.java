@@ -54,7 +54,7 @@ public class TinyUrlServiceTest {
 
   @Test
   void customAliasCheck() {
-    String customAlias = "testAlias";
+    String customAlias = "abcd123";
     // custom alias exists
     doReturn(Optional.of(mock(TinyUrl.class)))
         .when(tinyUrlRepository)
@@ -82,7 +82,7 @@ public class TinyUrlServiceTest {
   @Test
   void useCustomAlias() {
     String originalUrl = "http://www.test.com";
-    String customAlias = "testAlias";
+    String customAlias = "abcd123";
 
     // custom alias doesn't exist
     doReturn(Optional.empty()).when(tinyUrlRepository).findByShortUrl(eq(customAlias));
