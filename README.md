@@ -26,7 +26,7 @@ TBD
 TBD
 
 # Build
-##Prerequisites
+## Prerequisites
 - Download apache cassandra from http://cassandra.apache.org/download/. Follow your platform specific instructions to install.
 - Start cassandra and make sure it's running locally on port 9042.
 - Connect to cassandra using cqlsh and create a new keyspace named tinyurl_service using this CQL statement:
