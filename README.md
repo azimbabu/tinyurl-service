@@ -18,6 +18,7 @@ A RESTful Service to generate short url.
 - Java (https://openjdk.java.net/projects/jdk/12/). I used version 12.
 - Spring Boot (https://spring.io/projects/spring-boot). I used version 2.2.4.RELEASE.
 - Apache Cassandra (http://cassandra.apache.org/). I used version 3.11.4.
+- Achilles JUnit for Embedded Cassandra (https://github.com/doanduyhai/Achilles/wiki/Unit-testing)
 
 # System Architecture
 TBD
